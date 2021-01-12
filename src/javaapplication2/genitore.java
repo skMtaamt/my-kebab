@@ -25,7 +25,15 @@ public class genitore implements Runnable{
     @Override
     public void run(){
         while(!b){
-            if(a.cucina(nome)) termina();
+            if(a.cucina(nome)){
+                termina();
+            }else{
+                try {
+                    wait();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(genitore.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
     }
     
